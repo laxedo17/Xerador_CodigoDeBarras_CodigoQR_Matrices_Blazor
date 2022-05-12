@@ -1,0 +1,66 @@
+﻿@page "/"
+@using Syncfusion.Blazor.Buttons;
+
+<SfButton OnClick="OnExportarCodBar">Exportar</SfButton>
+
+<PageTitle>Xerador de codigos de barras e QR</PageTitle>
+<!--Inicio seccion Codigo de Barras-->
+<!--Code39 e un estandar que permite soportar numeros do 0 ao 9
+    maiusculas e espacios
+-->
+<SfBarcodeGenerator @ref="CodigoDeBarrasInst" Value="LINO2711" Type="BarcodeType.Code39" Height="100px"
+Width="200px"
+ForeColor="Blue">
+<BarcodeGeneratorDisplayText Text="CODE39-CODIGODEBARRAS"></BarcodeGeneratorDisplayText>
+</SfBarcodeGenerator>
+<!--Fin seccion codigo de barras-->
+
+<!--Inicio seccion Xerador de codigos QR-->
+<SfQRCodeGenerator Value="LINO2711"
+Height="100px"
+Width="200px"
+ForeColor="Blue">
+<QRCodeGeneratorDisplayText Text="CodigoQR"></QRCodeGeneratorDisplayText>
+</SfQRCodeGenerator>
+<!--Fin seccion Xerador de codigos QR-->
+
+
+<!--Inicio seccion Xerador de matrices-->
+<SfDataMatrixGenerator Value="LINO2711"
+Height="100px"
+Width="200px"
+ForeColor="Yellow">></SfDataMatrixGenerator>
+<!--Fin seccion Xerador de matrices-->
+
+@*<input type="text" @bind="TextoEntrada" placeholder="Escribe aqui..." />*@
+
+<br />
+<br />
+
+@*<button class="btn btn-primary" @onclick="XerarCodigoQR">Xenera Codigo QR</button>*@
+
+<br />
+<br />
+<!--O estilo css esta en arquivo site.css na carpeta wwwroot/css-->
+@*<img src="CodigoQRStr" class="estiloCodigoQR" />*@
+
+@code
+{
+    SfBarcodeGenerator CodigoDeBarrasInst;
+    //SfQRCodeGenerator TextoEntrada;
+
+    private void OnExportarCodBar()
+    {
+        CodigoDeBarrasInst.Export("ImaxenCodBarras", BarcodeExportType.JPG);
+    }
+
+    //    private void OnExportarQR()
+    //{
+    //    TextoEntrada.Export("ImaxenCodQR", Expor);
+    //}
+    //string TextoEntrada { get; set; } = "";
+    //if (!string.IsNullOrEmpty(TextoEntrada))
+    //{
+
+    //}
+}
